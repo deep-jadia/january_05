@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX pooling</title>
+    <meta charset="UTF-8">
+<head>
+<body>
+    <p> We have <span class="user-count"></span> amazing users!</p>
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script>
+        (function(){
+            var poll=function(){
+                //here $ is for jquery,we can also write jquery.ajax 
+                $.ajax({
+                    url: 'users.json',
+                    dataType: 'json',
+                    type:'get',
+                    success:function(){
+                        console.log('Sucess!');
+                    },
+                    error:function(){
+                        //error
+                         console.log("error");
+                    }                        
+                    
+                });
+            };          setInterval(function(){
+                poll();
+            },2000);
+        })();
+ 
+ 
+ 
+   </script>
+   </body>
+   </html>
